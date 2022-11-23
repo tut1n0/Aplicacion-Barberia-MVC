@@ -9,7 +9,7 @@ use Model\Servicio;
 class APIController {
     public static function index() {
         $servicios = Servicio::all();
-        echo json_encode($servicios);
+        echo json_encode($servicios, JSON_UNESCAPED_UNICODE);
     }
 
     public static function guardar() {
