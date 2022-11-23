@@ -3,6 +3,7 @@
 
 namespace Classes;
 use PHPMailer\PHPMailer\PHPMailer;
+use Dotenv\Dotenv as Dotenv;
 
 class Email {
     public $email;
@@ -21,11 +22,15 @@ class Email {
         //Crear el objeto de email
         $mail = new PHPMailer();
         $mail->isSMTP();
-        $mail->Host = 'smtp.mailtrap.io';
+        //$mail->Host = 'smtp.mailtrap.io';
+        $mail->Host = $_ENV['MAIL_HOST'];
         $mail->SMTPAuth = true;
-        $mail->Port = 2525;
-        $mail->Username = 'c075e304641c33';
-        $mail->Password = '3387e18620111a';
+        //$mail->Port = 2525;
+        $mail->Port = $_ENV['MAIL_PORT'];
+        //$mail->Username = 'c075e304641c33';
+        $mail->Username = $_ENV['MAIL_USER'];
+        //$mail->Password = '3387e18620111a';
+        $mail->Password = $_ENV['MAIL_PASS'];
 
         $mail->setFrom('cuentas@appsalon.com');
         $mail->addAddress('cuentas@appsalon.com', 'AppSalon.com');
@@ -37,7 +42,7 @@ class Email {
 
         $contenido = "<html>";
         $contenido .= "<p><strong>Hola " . $this->email . "</strong> Has creado tu cuenta en App Salon, solo debes confirmarla presionando el siguiente enlace</p>";
-        $contenido .= "<p>Presiona aqui: <a href='http://localhost:3000/confirmar-cuenta?token=" . $this->token . "'>Confirmar cuenta</a> </p>";
+        $contenido .= "<p>Presiona aqui: <a href='" . $_ENV['SERVER_HOST'] . $this->token . "'>Confirmar cuenta</a> </p>";
         $contenido .= "<p>Si no solicitaste abrir una cuenta, ignora este mensaje.</p>";
         $contenido .="</html>";
         
