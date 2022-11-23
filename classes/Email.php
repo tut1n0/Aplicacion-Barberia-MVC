@@ -4,6 +4,8 @@
 namespace Classes;
 use PHPMailer\PHPMailer\PHPMailer;
 use Dotenv\Dotenv as Dotenv;
+$dotenv = Dotenv::createImmutable('../includes/.env');
+$dotenv->safeLoad();
 
 class Email {
     public $email;
@@ -42,7 +44,7 @@ class Email {
 
         $contenido = "<html>";
         $contenido .= "<p><strong>Hola " . $this->email . "</strong> Has creado tu cuenta en App Salon, solo debes confirmarla presionando el siguiente enlace</p>";
-        $contenido .= "<p>Presiona aqui: <a href='" . $_ENV['SERVER_HOST'] . "'>Confirmar cuenta</a> </p>";
+        $contenido .= "<p>Presiona aqui: <a href='" . $_ENV['SERVER_HOST'] . "Confirmar cuenta</a> </p>";
         $contenido .= "<p>Si no solicitaste abrir una cuenta, ignora este mensaje.</p>";
         $contenido .="</html>";
         
