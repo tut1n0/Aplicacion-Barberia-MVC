@@ -42,7 +42,7 @@ class Email {
 
         $contenido = "<html>";
         $contenido .= "<p><strong>Hola " . $this->email . "</strong> Has creado tu cuenta en App Salon, solo debes confirmarla presionando el siguiente enlace</p>";
-        $contenido .= "<p>Presiona aqui: <a href='" . $_ENV['SERVER_HOST'] . $this->token . "'>Confirmar cuenta</a> </p>";
+        $contenido .= "<p>Presiona aqui: <a href='" . $_ENV['SERVER_HOST'] . "'>Confirmar cuenta</a> </p>";
         $contenido .= "<p>Si no solicitaste abrir una cuenta, ignora este mensaje.</p>";
         $contenido .="</html>";
         
